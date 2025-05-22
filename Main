@@ -1,0 +1,54 @@
+package proj1;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Hotel hotel = new Hotel();
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n--- Hotel Reservation System ---");
+            System.out.println("1. View Available Rooms");
+            System.out.println("2. Make a Reservation");
+            System.out.println("3. View Bookings");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine(); 
+
+            switch (choice) {
+                case 1:
+                    hotel.showAvailableRooms();
+                    break;
+                case 2:
+                    System.out.print("Enter your name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter room category (Deluxe/Standard): ");
+                    String category = scanner.nextLine();
+                    Bookings booking = hotel.makeReservation(name, category);
+                    if (booking != null) {
+                        System.out.println("Booking successful!");
+                        System.out.println(booking);
+                        System.out.println("Processing payment... Rs." + booking.getRoom().getPrice());
+                        System.out.println("Payment successful!");
+                    } else {
+                        System.out.println("No available rooms in that category.");
+                    }
+                    break;
+                case 3:
+                    hotel.showBookings();
+                    break;
+                case 4:
+                    System.out.println("Thank you for using the Hotel Reservation System.");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+        } while (choice != 4);
+
+        scanner.close();
+    }
+}
+
