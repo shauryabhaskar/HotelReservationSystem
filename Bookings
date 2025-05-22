@@ -1,0 +1,44 @@
+package proj1;
+
+public class Rooms {
+	    private int roomNumber;
+	    private String category;
+	    private double price;
+	    private boolean isBooked;
+
+	    public Rooms(int roomNumber, String category, double price) {
+	        this.roomNumber = roomNumber;
+	        this.category = category;
+	        this.price = price;
+	        this.isBooked = false;
+	    }
+
+	    public int getRoomNumber() {
+	        return roomNumber;
+	    }
+
+	    public String getCategory() {
+	        return category;
+	    }
+
+	    public double getPrice() {
+	        return price;
+	    }
+
+	    public boolean isBooked() {
+	        return isBooked;
+	    }
+
+	    public void bookRoom() {
+	        this.isBooked = true;
+	    }
+
+	    public void cancelBooking() {
+	        this.isBooked = false;
+	    }
+
+	    public String toString() {
+	        return "Room " + roomNumber + " [" + category + "] - Rs." + price + " - " + (isBooked ? "Booked" : "Available");
+	    }
+	}
+
